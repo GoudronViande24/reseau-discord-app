@@ -12,4 +12,5 @@
     <string name="github_url">https://github.com/GoudronViande24/reseau-discord-app</string>
     <string name="discord_id">Discord ID</string>
     <string name="form_title">Verify a Discord ID</string>
+    <string name="error_msg">An error occured</string>
 </resources>

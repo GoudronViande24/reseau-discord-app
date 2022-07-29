@@ -1,11 +1,13 @@
 package com.artivain.reseaudiscord;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
@@ -23,12 +25,14 @@ public class ReseauDiscordAPI {
 	private Context context;
 	private RequestQueue queue;
 
-	public JSONObject check(String id) throws ExecutionException, InterruptedException {
-		RequestFuture<JSONObject> future = RequestFuture.newFuture();
-		String url = baseUrl + "/v1/check?id=" + id;
-		JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(), future, future);
-		queue.add(request);
+	private final Response.ErrorListener errorListener = error -> {
+		Toast.makeText(context, R.string.error_msg, Toast.LENGTH_SHORT).show();
+		Log.e("ReseauDiscordAPI", error.toString());
+	};
 
-		return future.get();
+	public void check(String id, Response.Listener<JSONObject> callback) throws ExecutionException, InterruptedException {
+		String URL = baseUrl + "/v1/check?id=" + id;
+		JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null, callback, errorListener);
+		queue.add(request);
 	}
 }

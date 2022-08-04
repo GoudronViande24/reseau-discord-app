@@ -1,0 +1,3 @@
+The réseau Discord Artivain (or réseau Artivain in short, which would translate to "Artivain network") project is a collaboration between multiple partnered Discord servers to boost their security, and to work together on many projects. 
+
+This app is a simple way to verify if an ID is listed on the API.

@@ -1,0 +1,3 @@
+First usable version of the app.
+
+More stuff will be added in future versions!
